@@ -28,16 +28,16 @@
             text-align: center;
             max-width: 800px;
             width: 100%;
-            z-index: 2; /* Keep card above confetti */
+            z-index: 2;
         }
 
-        h1 {
+        h2 {
             color: #2c3e50;
             margin-bottom: 30px;
             font-size: 2.8rem;
             text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
         }
-        
+
         /* Card Styles */
         .card-container {
             perspective: 1000px;
@@ -76,7 +76,7 @@
         .card-front {
             background: linear-gradient(135deg, #87CEEB 0%, #B0E2FF 100%);
             color: #2c3e50;
-            display: flex; /* Keep flex for centering */
+            display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
@@ -89,9 +89,9 @@
             transform: rotateY(180deg);
             overflow-y: auto;
             text-align: left;
-            padding: 30px; /* Consistent padding */
-            /* The FIX: Override the flex centering so content starts at the top */
-            display: block; 
+            padding: 30px;
+            /* Key Fix: Overrides flex centering, allowing content to start at the top */
+            display: block;
         }
 
         /* Envelope and Letter Styles */
@@ -109,7 +109,7 @@
             height: 0;
             border-left: 100px solid transparent;
             border-right: 100px solid transparent;
-            border-top: 75px solid #5DADE2; /* Top flap color */
+            border-top: 75px solid #5DADE2;
             z-index: 2;
         }
 
@@ -118,7 +118,7 @@
             bottom: 0;
             width: 200px;
             height: 120px;
-            background: #87CEEB; /* Body color */
+            background: #87CEEB;
             border-radius: 0 0 10px 10px;
             z-index: 1;
         }
@@ -140,7 +140,7 @@
         }
 
         .card.open .letter {
-            transform: translateY(-120px); /* Move letter out when open */
+            transform: translateY(-120px);
         }
 
         .letter i {
@@ -187,7 +187,7 @@
             margin-bottom: 15px;
             text-align: center;
             color: #2c3e50;
-            margin-top: 0; /* Ensures it starts at the top */
+            margin-top: 0; /* Ensures the H3 starts right at the top of the padding */
         }
 
         .message h4 {
@@ -198,7 +198,7 @@
         }
 
         .message p {
-            font-size: 1.0rem; 
+            font-size: 1.0rem;
             line-height: 1.6;
             margin-bottom: 10px;
         }
@@ -209,17 +209,9 @@
             font-weight: bold;
             text-align: right;
             font-size: 1.1rem;
-            display: block; /* Make sure it takes up full width */
+            display: block;
         }
 
-        .instruction {
-            margin-top: 20px;
-            font-size: 1rem;
-            color: #2c3e50;
-            animation: pulse 2s infinite;
-        }
-
-        /* Flower and Cloud Decorations */
         .flowers {
             display: flex;
             justify-content: space-around;
@@ -228,7 +220,7 @@
         }
 
         .flower {
-            font-size: 1.8rem; 
+            font-size: 1.8rem;
             animation: float 3s ease-in-out infinite;
         }
 
@@ -247,16 +239,10 @@
         .cloud-2 { width: 60px; height: 20px; bottom: 40px; right: 40px; }
         .cloud-3 { width: 40px; height: 15px; top: 60px; right: 30px; }
 
-        /* Keyframe Animations */
+        /* Keyframe Animations (Confetti and other effects) */
         @keyframes bounce {
             0%, 100% { transform: translateY(0); }
             50% { transform: translateY(-10px); }
-        }
-
-        @keyframes pulse {
-            0% { opacity: 0.7; }
-            50% { opacity: 1; }
-            100% { opacity: 0.7; }
         }
 
         @keyframes float {
@@ -265,12 +251,12 @@
         }
 
         .confetti {
-            position: fixed; /* Fix to viewport for full screen effect */
+            position: fixed;
             width: 10px;
             height: 10px;
             background-color: #5DADE2;
             opacity: 0;
-            pointer-events: none; /* Ignore clicks */
+            pointer-events: none;
             z-index: 1;
         }
 
@@ -278,7 +264,7 @@
         /* RESPONSIVENESS (Media Queries) */
         /* ==================================== */
         @media (max-width: 768px) {
-            h1 {
+            h2 {
                 font-size: 2.5rem;
                 margin-bottom: 25px;
             }
@@ -290,8 +276,8 @@
                 height: 420px;
                 margin-bottom: 20px;
             }
-            
-            h1 {
+
+            h2 {
                 font-size: 2.2rem;
             }
 
@@ -303,8 +289,7 @@
                 font-size: 1.1rem;
             }
 
-            /* REMOVED the problematic margin-top:32px from here */
-            
+            /* Reduced font size for message content on small screens */
             .message p {
                 font-size: 0.95rem;
                 margin-bottom: 8px;
@@ -318,7 +303,7 @@
 
         @media (max-width: 400px) {
             .card-container {
-                width: 90%; /* Max width 90% of screen */
+                width: 90%;
                 height: 400px;
             }
 
@@ -326,7 +311,7 @@
                 width: 180px;
                 height: 135px;
             }
-            
+
             .envelope:before {
                 border-left-width: 90px;
                 border-right-width: 90px;
@@ -368,18 +353,17 @@
                     <h3>For My Wonderful Sir</h3>
                     <p>Tap the button below to open your message!</p>
                     <button class="open-btn" id="openBtn">Open Card</button>
-                    </div>
+                </div>
                 <div class="card-back">
                     <div class="message">
-                       
                         <h3>Happy Teacher Day Prof SK!♥</h3>
+                        
                         <p>Thank you for being a guiding light in my life. Your patience, dedication, and wisdom have shaped not just my education, but my character.</p>
                         <p>You've taught me that learning is a lifelong journey, and you've made that journey exciting and meaningful.</p>
-                        <p>On this special day, I want to express my deepest gratitude for everything you do. Wishing you a day filled with joy, love, and appreciation. You're the 'Ctrl+Alt+Win' of teachers! 
-</p>
+                        <p>On this special day, I want to express my deepest gratitude for everything you do. Wishing you a day filled with joy, love, and appreciation. You're the 'Ctrl+Alt+Win' of teachers!</p>
                         <p><b>Warning:</b> Your teacher is now CTD-trained and might just turn you into a pro!<br> Best wishes on your CTD journey!</p>
-                        
-                       
+
+
 
                         <div class="flowers">
                             <div class="flower">🌸</div>
@@ -396,62 +380,51 @@
         document.addEventListener('DOMContentLoaded', function() {
             const card = document.getElementById('card');
             const openBtn = document.getElementById('openBtn');
-            // The instruction element was not in the HTML, so let's remove its reference to prevent errors
-            // const instruction = document.getElementById('instruction');
-            
-            // Central function to toggle card state
+
             function toggleCard() {
                 card.classList.toggle('open');
-                
+
                 if (card.classList.contains('open')) {
                     openBtn.textContent = "Close Card";
-                    // instruction.textContent = "Click the button to close the card";
                     createConfetti();
                 } else {
                     openBtn.textContent = "Open Card";
-                    // instruction.textContent = "Click the button to open the card";
-                    // Clear confetti when closing
                     clearConfetti();
                 }
             }
 
-            // Function to clear all confetti and styles
             function clearConfetti() {
                 document.querySelectorAll('.confetti').forEach(c => c.remove());
                 document.querySelectorAll('style[data-confetti-style]').forEach(s => s.remove());
             }
 
-            // Button click event
             openBtn.addEventListener('click', function(e) {
-                e.stopPropagation(); // Prevents card click listener from firing
+                e.stopPropagation();
                 toggleCard();
             });
-            
-            // Card click event (opens card only if closed)
+
             card.addEventListener('click', function(e) {
-                // Ignore clicks if the click target is the button or a child of the button
                 if (e.target !== openBtn && !openBtn.contains(e.target)) {
                     if (!card.classList.contains('open')) {
                         toggleCard();
                     }
                 }
             });
-            
+
             function createConfetti() {
                 const colors = ['#5DADE2', '#3498DB', '#85C1E9', '#AED6F1', '#D6EAF8', '#FFD700'];
                 const container = document.body;
-                
-                // Clear before creating new set
+
                 clearConfetti();
 
                 for (let i = 0; i < 50; i++) {
                     const confetti = document.createElement('div');
                     confetti.className = 'confetti';
-                    
+
                     // Random starting position across the viewport
                     confetti.style.left = Math.random() * 100 + 'vw';
                     confetti.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
-                    
+
                     // Create unique animation for each confetti
                     const animationName = `fall-${Date.now()}-${i}`;
                     const duration = Math.random() * 3 + 2; // 2s to 5s
@@ -460,7 +433,6 @@
                     const style = document.createElement('style');
                     style.setAttribute('data-confetti-style', 'true');
 
-                    // Corrected Template Literal for CSS content
                     style.textContent = `
                         @keyframes ${animationName} {
                             0% {
@@ -474,10 +446,10 @@
                         }
                     `;
                     document.head.appendChild(style);
-                    
+
                     confetti.style.animation = `${animationName} ${duration}s linear forwards`;
                     container.appendChild(confetti);
-                    
+
                     // Remove confetti and its corresponding style tag after animation completes
                     setTimeout(() => {
                         if (confetti.parentNode) {
@@ -486,11 +458,10 @@
                         if (style.parentNode) {
                             style.remove();
                         }
-                    }, duration * 1000 + 100); // Wait a little longer than the duration
+                    }, duration * 1000 + 100);
                 }
             }
         });
     </script>
 </body>
 </html>
-

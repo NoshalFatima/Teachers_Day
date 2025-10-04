@@ -67,27 +67,31 @@
             backface-visibility: hidden;
             border-radius: 15px;
             box-shadow: 0 15px 35px rgba(0,0,0,0.15);
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
             padding: 30px;
             overflow: hidden;
             border: 2px solid #87CEEB;
         }
 
+        /* Card Front styles (centered content) */
         .card-front {
             background: linear-gradient(135deg, #87CEEB 0%, #B0E2FF 100%);
             color: #2c3e50;
+            display: flex; /* Keep flex for centering */
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
         }
 
+        /* Card Back styles (Flow from top - FIX APPLIED HERE) */
         .card-back {
             background: linear-gradient(135deg, #B0E2FF 0%, #E0F7FF 100%);
             color: #2c3e50;
             transform: rotateY(180deg);
             overflow-y: auto;
             text-align: left;
-            padding: 20px;
+            padding: 30px; /* Consistent padding */
+            /* The FIX: Override the flex centering so content starts at the top */
+            display: block; 
         }
 
         /* Envelope and Letter Styles */
@@ -146,7 +150,7 @@
         }
 
         /* Message and Button Styles */
-        .card-front h2 {
+        .card-front h3 {
             font-size: 1.8rem;
             margin-bottom: 10px;
             text-shadow: 1px 1px 3px rgba(0,0,0,0.1);
@@ -183,10 +187,18 @@
             margin-bottom: 15px;
             text-align: center;
             color: #2c3e50;
+            margin-top: 0; /* Ensures it starts at the top */
+        }
+
+        .message h4 {
+            font-size: 1.2rem;
+            text-align: center;
+            margin-bottom: 15px;
+            color: #3498DB;
         }
 
         .message p {
-            font-size: 1.0rem; /* Slightly reduced for better fit on back */
+            font-size: 1.0rem; 
             line-height: 1.6;
             margin-bottom: 10px;
         }
@@ -197,6 +209,7 @@
             font-weight: bold;
             text-align: right;
             font-size: 1.1rem;
+            display: block; /* Make sure it takes up full width */
         }
 
         .instruction {
@@ -215,7 +228,7 @@
         }
 
         .flower {
-            font-size: 1.8rem; /* Adjusted for card-back space */
+            font-size: 1.8rem; 
             animation: float 3s ease-in-out infinite;
         }
 
@@ -282,7 +295,7 @@
                 font-size: 2.2rem;
             }
 
-            .card-front h2 {
+            .card-front h3 {
                 font-size: 1.5rem;
             }
 
@@ -290,11 +303,8 @@
                 font-size: 1.1rem;
             }
 
-            .message h4 {
-               
-                margin-top:32px;
-            }
-
+            /* REMOVED the problematic margin-top:32px from here */
+            
             .message p {
                 font-size: 0.95rem;
                 margin-bottom: 8px;
@@ -355,19 +365,22 @@
                             <i class="fas fa-heart"></i>
                         </div>
                     </div>
-                    <h3 >For My Wonderful Sir</h3>
+                    <h3>For My Wonderful Sir</h3>
                     <p>Tap the button below to open your message!</p>
                     <button class="open-btn" id="openBtn">Open Card</button>
-                </div>
+                    </div>
                 <div class="card-back">
                     <div class="message">
                        
-                        <h4>Happy Teacher Day Prof SK!♥</h4>
+                        <h3>Happy Teacher Day Prof SK!♥</h3>
                         <p>Thank you for being a guiding light in my life. Your patience, dedication, and wisdom have shaped not just my education, but my character.</p>
                         <p>You've taught me that learning is a lifelong journey, and you've made that journey exciting and meaningful.</p>
                         <p>On this special day, I want to express my deepest gratitude for everything you do. Wishing you a day filled with joy, love, and appreciation. You're the 'Ctrl+Alt+Win' of teachers! 
 </p>
-                        <p><b> Warning: </b>Your teacher is now CTD-trained and might just turn you into a pro!<br> Best wishes on your CTD journey!</p>
+                        <p><b>Warning:</b> Your teacher is now CTD-trained and might just turn you into a pro!<br> Best wishes on your CTD journey!</p>
+                        
+                        <p class="signature">- A Grateful Student</p>
+
                         <div class="flowers">
                             <div class="flower">🌸</div>
                             <div class="flower">🌺</div>
@@ -376,13 +389,15 @@
                     </div>
                 </div>
             </div>
-       
+        </div>
+    </div>
 
     <script>
         document.addEventListener('DOMContentLoaded', function() {
             const card = document.getElementById('card');
             const openBtn = document.getElementById('openBtn');
-            const instruction = document.getElementById('instruction');
+            // The instruction element was not in the HTML, so let's remove its reference to prevent errors
+            // const instruction = document.getElementById('instruction');
             
             // Central function to toggle card state
             function toggleCard() {
@@ -390,11 +405,11 @@
                 
                 if (card.classList.contains('open')) {
                     openBtn.textContent = "Close Card";
-                    instruction.textContent = "Click the button to close the card";
+                    // instruction.textContent = "Click the button to close the card";
                     createConfetti();
                 } else {
                     openBtn.textContent = "Open Card";
-                    instruction.textContent = "Click the button to open the card";
+                    // instruction.textContent = "Click the button to open the card";
                     // Clear confetti when closing
                     clearConfetti();
                 }
@@ -477,5 +492,4 @@
         });
     </script>
 </body>
-
 </html>
